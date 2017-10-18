@@ -5,63 +5,59 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>zotfile@columbia.edu</em:id>
     <em:name>ZotFile</em:name>
-    <em:version>4.2.8</em:version>
+    <em:version>5.0.5</em:version>
     <em:type>2</em:type>
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
-
-    <!-- Target Application this extension can install into,
-         with minimum and maximum supported versions. -->
-    <em:targetApplication>
-      <Description>
-        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>31.0</em:minVersion>
-        <em:maxVersion>52.*</em:maxVersion>
-      </Description>
-    </em:targetApplication>
-	<em:targetApplication>
-		<Description>
-			<em:id>zotero@chnm.gmu.edu</em:id>
-			<em:minVersion>3.0b1</em:minVersion>
-			<em:maxVersion>4.*</em:maxVersion>
-		</Description>
-	</em:targetApplication>
-	<em:targetApplication>
-		<Description>
-			<em:id>juris-m@juris-m.github.io</em:id>
-			<em:minVersion>3.0b1</em:minVersion>
-			<em:maxVersion>4.*</em:maxVersion>
-		</Description>
-	</em:targetApplication>
-    <em:localized>
-      <Description>
-	<em:locale>en-US</em:locale>
-	<em:name>ZotFile</em:name>
-          <em:description>Advanced PDF management for Zotero</em:description>
-      </Description>
-    </em:localized>
-    <em:localized>
-      <Description>
-	<em:locale>de-DE</em:locale>
-	<em:name>ZotFile</em:name>
-          <em:description>Zotero Plug-in zur Verwaltung Ihrer Anhänge</em:description>
-      </Description>
-    </em:localized>
-	<em:localized>
-      <Description>
-	<em:locale>fr-FR</em:locale>
-	<em:name>ZotFile</em:name>
-          <em:description>Un module complémentaire de Zotero pour gérer vos pièces jointes</em:description>
-      </Description>
-    </em:localized>
-      <em:localized>
-     <Description>
-	<em:locale>it-IT</em:locale>
-	<em:name>ZotFile</em:name>
-         <em:description> Un plugin di Zotero per gestire i tuoi allegati</em:description>
-      </Description>
-    </em:localized>
     <em:creator>Joscha Legewie</em:creator>
     <em:homepageURL>http://www.zotfile.com</em:homepageURL>
     <em:optionsURL>chrome://zotfile/content/options.xul</em:optionsURL>
+    <em:updateURL>http://www.zotfile.com/zotfile-update.rdf</em:updateURL>
+    <em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCpXXp3Hx4rLiTLt3CBukiq+
+                  Co4T1OvGYWCkKAm8b2Mas8Si8+aqwO2ELyaJR2kwkhrf1ol0jNaiWPRmbrfD8
+                  g1uXBmMUhkg3/kHuhQMyj8nwcKBKGAilwH7wvWdaX4gb7kMg3ouJh+/E9jkgD
+                  /TogLttZCp/2UxU2vYUBtFQgszQIDAQAB</em:updateKey>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>zotero@chnm.gmu.edu</em:id>
+        <em:minVersion>5.0.0</em:minVersion>
+        <em:maxVersion>5.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>juris-m@juris-m.github.io</em:id>
+        <em:minVersion>4.999</em:minVersion>
+        <em:maxVersion>5.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:localized>
+      <Description>
+        <em:locale>en-US</em:locale>
+        <em:name>ZotFile</em:name>
+        <em:description>Advanced PDF management for Zotero</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>de-DE</em:locale>
+        <em:name>ZotFile</em:name>
+        <em:description>Zotero Plug-in zur Verwaltung Ihrer Anhänge</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>ZotFile</em:name>
+        <em:description>Un module complémentaire de Zotero pour gérer vos pièces jointes</em:description>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>it-IT</em:locale>
+        <em:name>ZotFile</em:name>
+        <em:description> Un plugin di Zotero per gestire i tuoi allegati</em:description>
+      </Description>
+    </em:localized>
   </Description>
 </RDF>
