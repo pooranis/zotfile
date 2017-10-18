@@ -390,7 +390,7 @@ Zotero.ZotFile = new function() {
         var filesuffix = prompt(this.ZFgetString('renaming.addUserInput.prompt', [original_filename, filename]), default_str);
         if (filesuffix != '' && filesuffix != null) {
             // add file type to the file name
-            filename = filename + ' (' + filesuffix + ')';
+            filename = filename + '_' + filesuffix;
         }
         return(filename);
     };
