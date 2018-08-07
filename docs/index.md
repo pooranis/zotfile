@@ -22,7 +22,7 @@ To start using zotfile, make sure that Zotero is installed and follow these simp
 
 1. Install ZotFile
 
-    For *Zotero 5*, first download the extension file (follow the download link above, click on the .xpi file for the most recent release). Now start Zotero 5 and go to "Tool -> Add-ons -> Tools for all Add-ons (the small, drop-down wheel in the top right corner) -> Install Add-on From File" and select the downloaded .xpi file. For *Zotero 4.x*, the process is different for Zotero for Firfox and Zotero Standalone. For Zotero 4.x Firefox, go to the [Mozilla Add-Ons page](https://addons.mozilla.org/en-us/firefox/addon/zotfile/) and follow the instructions. For Zotero 4.x Standalone, use the same steps as for Zotero 5 but download the .xpi file from [here](https://addons.mozilla.org/firefox/downloads/file/585224/zotfile-4.2.8-fx.xpi?src=dp-btn-primary)
+    For *Zotero 5*, first download the extension file (follow the download link above, click on the .xpi file for the most recent release). Now start Zotero 5 and go to "Tool -> Add-ons -> Tools for all Add-ons (the small, drop-down wheel in the top right corner) -> Install Add-on From File" and select the downloaded .xpi file.
 
 2. Change the Source Folder for Attaching new Files
 
@@ -35,7 +35,7 @@ To start using zotfile, make sure that Zotero is installed and follow these simp
 #### Syncing pdf attachments with your ipad or android tablet
 
 To read and annotate PDF attachments on your mobile device, zotfile can sync PDFs from your Zotero library to your (mobile) PDF reader (e.g. an iPad, Android tablet, etc.). For this purpose, Zotfile sends files to a location on your PC or Mac that syncs with your PDF reader App (PDF Expert, iAnnotate, GoodReader etc.), and gets them back when you have finished reading them. To get started, first set up a folder on your PC or Mac that syncs with your tablet reader application. Files that are copied to this folder should automatically appear in your PDF reader application. One possibility is Dropbox, which is free for up to 2GB of space and works with most PDF reader apps. More detailed instructions as well as alternative options should be available on the website of your PDF reader App. Second, open the 'Tablet Settings' tab in the zotfile preference window and enable the option 'Use ZotFile to send and get files from tablet'. Third, change the zotfile location for files on the tablet to the folder that syncs with your pdf reader app ('Base Folder' on the 'Tablet Settings' tab). Forth (optional), set up subfolders that make it easy to sort your files in the tablet folder so that you can easily find them on your tablet.
-You can now start sending pdfs (or other files) to your tablet. Simply right-click on a zotero item and select 'Send to Tablet' under 'Manage Attachments'. When you are done reading and annotating your pdf, just get the file back from the tablet by clicking on 'Get from Tablet' under 'Manage Attachments'. ZotFile will automatically remove the file from your tablet folder and extract the annotations from the pdf file to a zotero note. Alternatively, you can use the 'Scan Tablet Files' function in Zotero's Action Menu to automatically check whether any files in the tablet folder have changed. ZotFile then asks the user how to proceed for each modified file.
+You can now start sending pdfs (or other files) to your tablet. Simply right-click on a zotero item and select 'Send to Tablet' under 'Manage Attachments'. When you are done reading and annotating your pdf, just get the file back from the tablet by clicking on 'Get from Tablet' under 'Manage Attachments'. ZotFile will automatically remove the file from your tablet folder and extract the annotations from the pdf file to a zotero note. ZotFile adds a saved search for modified files on tablet which updates automatically and can be used to sync attachment files that have been changed.
 
 ### RENAMING RULES
 
@@ -241,6 +241,20 @@ Search for `extensions.zotfile` to see a list of the hidden zotfile options. Her
 You can report bugs on the [Zotfile thread](http://forums.zotero.org/discussion/5301/6/zotfile-zotero-plugin-to-rename-move-and-attach-pdfs-send-them-to-ipad-extract-pdf-annotations/) in the Zotero forum. Please provide information about about your system (Windows, Mac OS, Linux etc) as well as your Zotfile, Zotero and Firefox version. Also make sure that you can reproduce the bug and describe the steps as closely as possible. In addition, any information from the Error Console are very helpful. You can check the Error Console in Zotero by going to 'Help -> Report Errors to Zotero...' (do not follow the steps, just look at report content). For zotfile bugs,  the 'Source File' should be something like `chrome://zotfile/content/...` (most likely zotfile.js). You can also clear the console, execute the actions that caused the problem and then check again. If I ask you to provide a Report ID, follow the instructions [here](http://www.zotero.org/support/reporting_bugs).
 
 ### CHANGELOG
+
+#### Changes in 5.0.8
+
+- Update open pdf protocol handler for compatibility with Zotero
+
+    The new URL format also supported by Zotero is `zotero://open-pdf/library/items/[itemKey]?page=[page]` for pdf attachments in the personal library and `zotero://open-pdf/groups/[groupID]/items/[itemKey]?page=[page]` for items group libraries.
+
+#### Changes in 5.0.7
+
+- Fix problem with 'undefined' subfolders
+
+#### Changes in 5.0.6
+
+- Fix problem with notifications that don't disappear
 
 #### Changes in 5.0.5
 

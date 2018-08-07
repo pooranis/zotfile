@@ -332,10 +332,8 @@ Zotero.ZotFile = new function() {
         callback = typeof callback !== 'undefined' ? callback : null;
         time = typeof time !== 'undefined' ? time : this.getPref('info_window_duration');
         // show window
-        var pw = new (this.ProgressWindow);
-        pw.changeHeadline(main);
+        var pw = this.progressWindow(main);
         if (main=='error') pw.changeHeadline(Zotero.getString('general.errorHasOccurred'));
-
         if (typeof(message) == 'object' && message.lines) {
             for (i =0;i<message.lines.length;i++) {
                 // pw.addLines(message.lines[i]);
@@ -351,7 +349,6 @@ Zotero.ZotFile = new function() {
         else
             pw.addDescription(message);
 
-        pw.show();
         pw.startCloseTimer(time);
         // add callback
         if (callback!==null)
@@ -458,6 +455,7 @@ Zotero.ZotFile = new function() {
      */
     this.formatSubfolder = function(item, format) {
         if (format == '') return '';
+        if(format.slice(-1) == this.folderSep) format = format.slice(0, -1);
         var subfolder = this.Wildcards.replaceWildcard(item, format);
         if (subfolder[0] == this.folderSep) subfolder = subfolder.slice(1);
         // replace invalid characters        
