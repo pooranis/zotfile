@@ -455,16 +455,15 @@ Zotero.ZotFile = new function() {
      */
     this.formatSubfolder = function(item, format) {
         if (format == '') return '';
-        if(format.slice(-1) == this.folderSep) format = format.slice(0, -1);
+        if (format.slice(-1) == this.folderSep) format = format.slice(0, -1);
+        if (format[0] == this.folderSep) format = format.slice(1);
         var subfolder = this.Wildcards.replaceWildcard(item, format);
-        if (subfolder[0] == this.folderSep) subfolder = subfolder.slice(1);
-        // replace invalid characters        
+        // replace invalid characters
         subfolder = OS.Path.split(subfolder).components
             .map(s => s == '' ? 'undefined' : s)
+            .filter(s => s != this.Wildcards.emptyCollectionPlaceholder)
             .map(s => Zotero.File.getValidFileName(s))
             .join(this.folderSep);
-        if (format.replace(/[\/\\]/g,'') == '%c')
-            subfolder = subfolder.replace(/undefined[\/\\]?/g, '');
         return OS.Path.normalize(subfolder);
     };
 
@@ -522,7 +521,7 @@ Zotero.ZotFile = new function() {
             // TODO: use an integer counter instead of mod time for change detection
             // Update mod time first, because it may fail for read-only files on Windows
             yield OS.File.setDates(origPath, null, null);
-            var result = yield this.moveFile(origPath, destPath)
+            destPath = yield this.moveFile(origPath, destPath);
             
             yield att.relinkAttachmentFile(destPath);
             
