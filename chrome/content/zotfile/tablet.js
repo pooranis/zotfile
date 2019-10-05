@@ -275,8 +275,9 @@ Zotero.ZotFile.Tablet = new function() {
         var atts = Zotero.Items.get(search_results)
             .filter(item => item.isAttachment() && !item.isTopLevelItem());
         // show warning if no information in note
-        atts.filter(att => this.Tablet.getInfo(att, 'mode') === '')
-            .forEach(att => this.infoWindow(this.ZFgetString('general.warning'), this.ZFgetString('tablet.attachmentNoteMissing') + ' (' + att.key + ')'));
+        if(this.getPref('tablet.showwarning'))
+            atts.filter(att => this.Tablet.getInfo(att, 'mode') === '')
+                .forEach(att => this.infoWindow(this.ZFgetString('general.warning'), this.ZFgetString('tablet.attachmentNoteMissing') + ' (' + att.key + ')'));
         // return attachments on tablet
         atts = atts.filter(att => this.Tablet.getInfo(att, 'mode') != '')
             .filter(att => subfolder === undefined || this.Tablet.getInfo(att, 'projectFolder').toLowerCase() == subfolder.toLowerCase());
@@ -373,20 +374,20 @@ Zotero.ZotFile.Tablet = new function() {
             .some(c => c.condition == 'tag' && c.operator != 'isNot' && c.value.indexOf(this.tag) !== -1)
         var searches = Zotero.Searches.getAll().filter(search_filter);
         // remove all note related conditions
-        searches.forEach(function(search) {
+        for (let search of searches) {
             search.getConditions()
                 .filter(c => c.condition == 'note' && c.operator == 'contains')
                 .forEach(c => search.removeCondition(c.id))
             yield search.saveTx();
-        });
+        }
         // restrict to subfolder or unfiled items (basefolder)
         var note_contains = which > 0 ? subfolders[which - 1].path : '&quot;projectFolder&quot;:&quot;&quot;';
-        searches.forEach(function(search) {
+        for (let search of searches) {
             search.addCondition('note', 'contains', note_contains);
             yield search.saveTx();
             var win = this.wm.getMostRecentWindow('navigator:browser');
             win.ZoteroPane.onCollectionSelected();
-        });
+        }
     }.bind(Zotero.ZotFile));
 
 
